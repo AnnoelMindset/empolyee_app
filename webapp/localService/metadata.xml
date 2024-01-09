@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZANNOEL_EMPLOYEE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="employee_head" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmployeeId"/>
+                </Key>
+                <Property Name="EmployeeId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="employee id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmployeeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="employee name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Designation" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="employee Designation" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyMail" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="company mail" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="employeehead_to_details" Relationship="ZANNOEL_EMPLOYEE_SRV.employeehead_to_detail" FromRole="FromRole_employeehead_to_detail" ToRole="ToRole_employeehead_to_detail"/>
+            </EntityType>
+            <EntityType Name="employee_details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmployeeId"/>
+                </Key>
+                <Property Name="EmployeeId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="employee id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Adress" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="adress" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="phone number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PersonalMail" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="personal Mail" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Skills" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="to sotre the skills of the employee" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="employeehead_to_detail" sap:content-version="1">
+                <End Type="ZANNOEL_EMPLOYEE_SRV.employee_head" Multiplicity="1" Role="FromRole_employeehead_to_detail"/>
+                <End Type="ZANNOEL_EMPLOYEE_SRV.employee_details" Multiplicity="1" Role="ToRole_employeehead_to_detail"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_employeehead_to_detail">
+                        <PropertyRef Name="EmployeeId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_employeehead_to_detail">
+                        <PropertyRef Name="EmployeeId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZANNOEL_EMPLOYEE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="employee_headSet" EntityType="ZANNOEL_EMPLOYEE_SRV.employee_head" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="employee_detailsSet" EntityType="ZANNOEL_EMPLOYEE_SRV.employee_details" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="employeehead_to_detailSet" Association="ZANNOEL_EMPLOYEE_SRV.employeehead_to_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="employee_headSet" Role="FromRole_employeehead_to_detail"/>
+                    <End EntitySet="employee_detailsSet" Role="ToRole_employeehead_to_detail"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://34.200.61.165:44300/sap/opu/odata/sap/ZANNOEL_EMPLOYEE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://34.200.61.165:44300/sap/opu/odata/sap/ZANNOEL_EMPLOYEE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,55 @@
+<mvc:View controllerName="employeedetailentity.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <SplitApp initialDetail="detail" initialMaster="master">
+<detailPages>
+<Page id="details" title="Employee  Details" backgroundDesign="Solid">
+<Bar>
+<contentLeft>
+<Button id="edit" icon="sap-icon://edit" enabled="true" press="onEdit"/>
+<Button id="cancel" icon="sap-icon://delete" press="handleCancelPress" visible="{oenableModel>/enabled}"/>
+<Button id="save" icon="sap-icon://save" press="handleSavePress" visible="{oenableModel>/enabled}"/>
+</contentLeft>
+</Bar>
+<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" title="Details" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+<f:content>
+<Label text="Employee ID"/>
+<Input value="{oReqModel>/results/EmployeeId}" enabled="{oenableModel>/enabled}" required="true"/>
+<Label text="Employee name"/>
+<Input value="{oReqModel>/results/EmployeeName}" enabled="{oenableModel>/enabled}"/>
+<Label text="Designation"/>
+<Input value="{oReqModel>/results/Designation}" enabled="{oenableModel>/enabled}"/>
+<Label text="Company Mail"/>
+<Input value="{oReqModel>/results/CompanyMail}" enabled="{oenableModel>/enabled}"/>
+<Label text="Adress"/>
+<Input value="{oReqModel>/results/employeehead_to_details/Adress}" enabled="{oenableModel>/enabled}"/>
+<Label text="Phone number"/>
+<Input value="{oReqModel>/results/employeehead_to_details/PhoneNumber}" enabled="{oenableModel>/enabled}"/>
+<Label text="Personal Mail"/>
+<Input value="{oReqModel>/results/employeehead_to_details/PersonalMail}" enabled="{oenableModel>/enabled}"/>
+<Label text=" Skills"/>
+<Input value="{oReqModel>/results/employeehead_to_details/Skills}" enabled="{oenableModel>/enabled}"/>
+
+</f:content>
+</f:SimpleForm>
+</Page>
+</detailPages>
+<masterPages>
+<Page id="master" title="Material request" backgroundDesign="List">
+<HeaderContainer>
+<Toolbar>
+<HBox>
+<SearchField liveChange="onSearch" placeholder="Search Request" width="auto"/>
+<Button icon="sap-icon://add" press="onCreate"/>
+</HBox>
+</Toolbar>
+</HeaderContainer>
+<List items="{/employee_headSet}">
+<StandardListItem type="Navigation" press="listItemPressed" title="{EmployeeId}" description ="{EmployeeName}"/>
+</List>
+</Page>
+</masterPages>
+</SplitApp>
+    </Page>
+</mvc:View>

@@ -1,0 +1,78 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+<Dialog title="Enter new details">
+        <l:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
+            <l:content>
+                <f:SimpleForm id="SimpleFormDisplay354" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="2" columnsM="2">
+                    <f:content>
+                    <f:SimpleForm id="idEditTaskDialog12" minWidth="1024" maxContainerCols="1" editable="true" binding="{oCreatepayload>/createTaskObj}" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+                <f:content>
+                    <Label text="EmplyoeeId" />
+                    <Input value="{/payload/EmployeeId}"  placeholder="Employee Id" required="true"/>
+                    <!-- <Label text="EmplyoeeId" />
+                    <Input value="{/payload/EmployeeId}"  placeholder="Employee Id" required="true"> -->
+                    <!-- <Input value="{oReqModel>/results/EmployeeName}" enabled="{oenableModel>/enabled}"/> -->
+                    <Label text="Employee Name" />
+                    <Input value="{/payload/EmployeeName}"  >
+                        <!-- <suggestionItems>
+                            <core:ListItem text="Employee Name"/>
+                        </suggestionItems> -->
+                    </Input>
+
+                    <Label text="Designation" />
+
+                    <Input value="{/payload/Designation}" placeholder="Designation">
+                        <suggestionItems>
+                            <core:ListItem text="{Designation}"/>
+                        </suggestionItems>
+                    </Input>
+                    <Label text=" Company Mail"  />
+                    <Input value="{/payload/CompanyMail}" placeholder="Company Mail">
+                        <suggestionItems>
+                            <core:ListItem text="{Company Mail}"/>
+                        </suggestionItems>
+                    </Input>
+
+                    <Label text="Adress" />
+                    <Input value="{/payload/employeehead_to_details/Adress}" placeholder="Adress">
+                        <suggestionItems>
+                            <core:ListItem text="{Adress}"/>
+                        </suggestionItems>
+                    </Input>
+
+                    <Label text="Phone number" />
+                    <Input value="{/payload/employeehead_to_details/PhoneNumber}" placeholder="Phone number">
+                        <suggestionItems>
+                            <core:ListItem text="{Phone number}"/>
+                        </suggestionItems>
+                    </Input>
+                     <Label text="Personal Mail" />
+                    <Input value="{/payload/employeehead_to_details/PersonalMail}" placeholder="Personal Mail">
+                        <suggestionItems>
+                            <core:ListItem text="{Personal Mail}"/>
+                        </suggestionItems>
+                    </Input>
+                    <Label text="Skills" />
+                    <Input value="{/payload/employeehead_to_details/Skills}" placeholder="Skills">
+                        <suggestionItems>
+                            <core:ListItem text="{Skills}"/>
+                        </suggestionItems>
+                    </Input>
+
+                </f:content>
+            </f:SimpleForm>
+                    </f:content>
+                </f:SimpleForm>
+            </l:content>
+        </l:Grid>
+        <buttons>
+            <Button text="Create" press="Createdetails" type="Emphasized" />
+            <Button text="Close" press="closeDialog1" type="Reject" />
+        </buttons>
+    </Dialog>
+</c:FragmentDefinition>
